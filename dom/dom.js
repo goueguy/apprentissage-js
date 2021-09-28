@@ -91,8 +91,38 @@ window.addEventListener('scroll',()=>{
     }
 })
 
-//----------------------
+//----------------------FORM EVENTS--------------
 const inputName = document.querySelector('input[type="text"]');
-inputName.addEventListener('input',(e)=>{
-    console.log(e.target.value);
+const select = document.querySelector("select");
+const form = document.querySelector("form");
+
+let pseudo = "";
+let language = "";
+
+select.addEventListener('input',(e)=>{
+    language = e.target.value;
 });
+
+inputName.addEventListener('input',(e)=>{
+    pseudo = e.target.value;
+});
+
+form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    if(cgv.checked){
+        document.querySelector('form > div').innerHTML = `
+        <h3>PSEUDO: ${pseudo}</h3>
+        <h4>Langage préféré: ${language}</h4>
+        `
+    }else{
+        alert('VEUILLEZ ACCEPTER LES CGU');
+    }
+});
+
+//------------------------LOAD EVENT----------
+
+window.addEventListener("load",()=>{
+    console.log("DOCUMENT CHARGE !");
+});
+
+//---------------------------------------------DOM: 2 h 30 min----------------------------------
